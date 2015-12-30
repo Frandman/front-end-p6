@@ -26,6 +26,23 @@ $(function() {
             expect(allFeeds.length).not.toBe(0);
         });
 
+        /* All objects inside allFeeds are of the correct type */
+
+        it('has the correct type', function(){
+            function Feed (feed) {
+                this.name = feed.name,
+                this.url = feed.url
+             };
+            var fakeFeed = {name: 'name', href: 'href'};
+            allFeeds.forEach(function(feed){
+                expect(new Feed(feed)).toEqual(jasmine.any(Object));
+                expect(new Feed(feed)).toEqual(jasmine.any(Feed));
+                expect(fakeFeed).not.toEqual(jasmine.any(Feed));
+            })
+        });
+
+
+
 
         /* TODO: Write a test that loops through each feed
          * in the allFeeds object and ensures it has a URL defined
