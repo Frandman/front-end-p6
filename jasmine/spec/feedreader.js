@@ -3,6 +3,8 @@ $(function() {
 
     'use strict';
 
+    /* Test suite to test app global features */
+
     describe ('RSS Feed App', function(){
         var feedLength = allFeeds.length;
         var fakeFeed = {
@@ -10,18 +12,26 @@ $(function() {
             url: 'www.fakeurl.com'
         };
 
+        /* Before each test, we add our fake feed */
+
         beforeEach(function() {
             addFeed(fakeFeed);
         });
+
+        /* Spec to test if the addFeed option exist */
 
         it('should have an addFeed function', function(){
             expect(addFeed).toBeDefined();
         });
 
+        /* Spec to test if the new feed is effectively added */
+
         it('should accept new Feeds', function(){
             expect(feedLength).toBeGreaterThan(allFeeds.length);
         });
     });
+
+    /* Test suite to test feed features */
 
     describe('RSS Feeds', function() {
         it('are defined', function() {
@@ -44,6 +54,8 @@ $(function() {
         });
     });
 
+    /* Test suite to test hidding menu functionality */
+
     describe('The menu', function(){
         var body = $('body');
         var menu_icon = $('.menu-icon-link');
@@ -60,6 +72,8 @@ $(function() {
         });
     });
 
+    /* Test suite to test feed loading */
+
     describe('Initial entries', function() {
 
         beforeEach(function(done) {
@@ -72,6 +86,8 @@ $(function() {
        });
 
     });
+
+    /* Test suite to test feed selection behaviour */
 
     describe('New Feed Selection', function() {
         var oldContent;
